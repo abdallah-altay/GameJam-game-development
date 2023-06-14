@@ -14,7 +14,7 @@ public class ItemManager : MonoBehaviour
 
     public void AddImageIcon(string name)
     {
-        switch (gameObject.name)
+        switch (name)
         {
             case "Item Lockpick":
                 ItemInfo.hasItemLockpick = true;

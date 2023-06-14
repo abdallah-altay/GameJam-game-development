@@ -11,6 +11,8 @@ public class DoorScript : Interactable
         {
             Debug.Log("Opened!");
             notOpened = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 }
