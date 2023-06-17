@@ -84,6 +84,9 @@ public class GuardMovement : MonoBehaviour
 
     public void ResetPlayer()
     {
-        Debug.Log("Hi");
+        if(ItemInfo.isInvisible != true)
+        {
+            Debug.Log("Hi");
+        }
     }
 }

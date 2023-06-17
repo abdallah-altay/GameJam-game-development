@@ -7,4 +7,5 @@ public static class ItemInfo
     public static bool hasItemLockpick;
     public static bool hasItemScrewdriver;
     public static bool hasItemCarKeys;
+    public static bool isInvisible;
 }
