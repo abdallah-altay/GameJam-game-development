@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class ItemManager : MonoBehaviour
 {
     private GameObject itemSlots;
+    public GameObject guards;
+    public GuardMovement[] guardMovements;
 
     public void Awake()
     {
         itemSlots = GameObject.Find("ItemHud");
+        guardMovements = guards.GetComponentsInChildren<GuardMovement>();
     }
 
-    public void AddImageIcon(string name)
+    public void HandleInteraction(string name)
     {
         switch (name)
         {
@@ -27,6 +30,12 @@ public class ItemManager : MonoBehaviour
             case "Item Car Keys":
                 ItemInfo.hasItemCarKeys = true;
                 itemSlots.transform.GetChild(2).GetChild(0).GetComponent<Image>().enabled = true;
+                break;
+            case "Freeze Potion":
+                foreach(var guard in guardMovements)
+                {
+                    guard.canMove = false;
+                }
                 break;
         }
     }
