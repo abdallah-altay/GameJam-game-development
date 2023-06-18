@@ -16,14 +16,13 @@ public class ColliderListener : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.gameObject.name == "Player")
+        if (this.gameObject.name == "StartCollider" || this.gameObject.name == "EndCollider")
+        {
+            this.gameObject.GetComponent<RespawnerManager>().Interacted(gameObject.name);
+        }
+        if (other.transform.gameObject.name == "Player" && this.gameObject.name == "Guard")
         {
             this.gameObject.GetComponent<GuardMovement>().ResetPlayer();
         }
