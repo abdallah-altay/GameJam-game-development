@@ -6,7 +6,7 @@ public class ItemScript : Interactable
 {
     public override void Interacted(Collider2D other)
     {
-        GameObject.Find("ItemManager").GetComponent<ItemManager>().AddImageIcon(gameObject.name);
+        GameObject.Find("ItemManager").GetComponent<ItemManager>().HandleInteraction(gameObject.name);
         Destroy(this.gameObject);
     }
 }
