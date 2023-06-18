@@ -6,7 +6,10 @@ public class ItemScript : Interactable
 {
     public override void Interacted(Collider2D other)
     {
-        GameObject.Find("ItemManager").GetComponent<ItemManager>().HandleInteraction(gameObject.name);
-        Destroy(this.gameObject);
+        if (other.gameObject.name == "Player")
+        {
+            GameObject.Find("ItemManager").GetComponent<ItemManager>().HandleInteraction(gameObject.name);
+            Destroy(this.gameObject);
+        }
     }
 }

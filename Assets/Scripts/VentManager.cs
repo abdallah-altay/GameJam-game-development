@@ -9,7 +9,7 @@ public class VentManager : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.gameObject.name == "Player" && canTeleport)
+        if (other.transform.gameObject.name == "Player" && canTeleport && ItemInfo.hasItemScrewdriver)
         {
             otherVent.GetComponent<VentManager>().canTeleport = false;
             TeleportToOtherVent(other.transform.gameObject);

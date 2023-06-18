@@ -84,6 +84,7 @@ public class GuardMovement : MonoBehaviour
 
     public void ResetPlayer()
     {
+        Debug.Log(ItemInfo.isInvisible);
         if(ItemInfo.isInvisible != true)
         {
             GameObject.Find("Spawner Manager").GetComponent<RespawnerManager>().ResetPlayerToSpawn();

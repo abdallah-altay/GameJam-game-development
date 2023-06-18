@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 654953985180970117}
   - component: {fileID: 654953985180970170}
   m_Layer: 0
-  m_Name: GuardPrefab
+  m_Name: Guard
   m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

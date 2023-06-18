@@ -34,11 +34,13 @@ public class RespawnerManager : MonoBehaviour
 
     public void ResetPlayerToSpawn()
     {
+        Debug.Log("Reset");
         player.transform.position = startPosition;
     }
 
     public void TriggeredEnd()
     {
+        Debug.Log(ItemInfo.hasItemLockpick);
         if(ItemInfo.hasItemLockpick == true)
         {
             youWin.SetActive(true);

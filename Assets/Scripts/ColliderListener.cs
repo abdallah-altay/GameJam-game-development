@@ -20,6 +20,7 @@ public class ColliderListener : MonoBehaviour
     {
         if (this.gameObject.name == "StartCollider" || this.gameObject.name == "EndCollider")
         {
+            Debug.Log(this.gameObject.name);
             this.gameObject.GetComponent<RespawnerManager>().Interacted(gameObject.name);
         }
         if (other.transform.gameObject.name == "Player" && this.gameObject.name == "Guard")
