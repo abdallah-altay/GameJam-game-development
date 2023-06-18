@@ -9,7 +9,7 @@ public class GuardMovement : MonoBehaviour
     public Vector2 position2;
     public float speed;
     private float moveTo;
-    private bool canMove = true;
+    public bool canMove = true;
 
     //This is to check which way the guard is moving
     //MovingWay = true means the guard is moving from position 1 to position 2
