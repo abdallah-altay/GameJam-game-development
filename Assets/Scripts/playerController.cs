@@ -6,7 +6,9 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float moveSpeed = 9;
+    public float moveSpeed = 5;
+    public bool speedBuff = false;
+    private bool powerUpActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +24,24 @@ public class playerController : MonoBehaviour
 
     private void Movement()
     {
+        if (speedBuff)
+        {
+            StartCoroutine(PowerUp());
+        } else if (!speedBuff && powerUpActive) {
+            powerUpActive = false;
+            StopCoroutine(PowerUp());
+        }
         float horizontal = Input.GetAxis("Horizontal") * moveSpeed;
         float vertical = Input.GetAxis("Vertical") * moveSpeed;
-        //Vector3 UserInput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         rb.velocity = new Vector2(horizontal, vertical);
+    }
+
+    IEnumerator PowerUp()
+    {
+        moveSpeed = 8;
+        powerUpActive = true;
+        yield return new WaitForSeconds(5);
+        moveSpeed = 5;
+        speedBuff = false;
     }
 }
