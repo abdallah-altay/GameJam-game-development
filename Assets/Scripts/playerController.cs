@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour
     public Rigidbody2D rb;
     public Sprite idlePlayer;
     public GameObject player;
-    public float moveSpeed = 5;
+    public float moveSpeed = 2;
     public bool speedBuff = false;
     private bool powerUpActive = false;
     private bool direction = false;
@@ -66,10 +66,10 @@ public class playerController : MonoBehaviour
 
     IEnumerator PowerUp()
     {
-        moveSpeed = 8;
+        moveSpeed = 3;
         powerUpActive = true;
         yield return new WaitForSeconds(5);
-        moveSpeed = 5;
+        moveSpeed = 2;
         speedBuff = false;
     }
 }
