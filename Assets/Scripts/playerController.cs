@@ -7,9 +7,11 @@ public class playerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Sprite idlePlayer;
+    public GameObject player;
     public float moveSpeed = 5;
     public bool speedBuff = false;
     private bool powerUpActive = false;
+    private bool direction = false;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,16 @@ public class playerController : MonoBehaviour
             transform.GetComponent<Animator>().enabled = false;
             transform.GetComponent<SpriteRenderer>().sprite = idlePlayer;
         }
+        if(Input.GetAxis("Horizontal") < 0 && direction == false)
+        {
+            direction = true;
+            player.transform.Rotate(0.0f, 180.0f, 0.0f);
+        } else if (Input.GetAxis("Horizontal") > 0 && direction == true)
+        {
+            direction = false;
+            player.transform.Rotate(0.0f, 180.0f, 0.0f);
+        }
+         
     }
 
     IEnumerator PowerUp()
