@@ -8,6 +8,7 @@ public class ItemManager : MonoBehaviour
     private GameObject itemSlots;
     public GameObject guards;
     public GuardMovement[] guardMovements;
+    public GameObject player;
 
     public void Awake()
     {
@@ -36,6 +37,9 @@ public class ItemManager : MonoBehaviour
                 {
                     guard.canMove = false;
                 }
+                break;
+            case "Speed Potion":
+                player.GetComponent<playerController>().speedBuff = true;
                 break;
         }
     }
