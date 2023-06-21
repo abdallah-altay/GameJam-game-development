@@ -22,15 +22,15 @@ public class ItemManager : MonoBehaviour
         {
             case "Item Lockpick":
                 ItemInfo.hasItemLockpick = true;
-                itemSlots.transform.GetChild(0).GetChild(0).GetComponent<Image>().enabled = true;
+                SetItemVisualTrue(0);
                 break;
             case "Item Screwdriver":
                 ItemInfo.hasItemScrewdriver = true;
-                itemSlots.transform.GetChild(1).GetChild(0).GetComponent<Image>().enabled = true;
+                SetItemVisualTrue(1);
                 break;
             case "Item Car Keys":
                 ItemInfo.hasItemCarKeys = true;
-                itemSlots.transform.GetChild(2).GetChild(0).GetComponent<Image>().enabled = true;
+                SetItemVisualTrue(2);
                 break;
             case "Freeze Potion":
                 foreach(var guard in guardMovements)
@@ -44,24 +44,17 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    public void SetItemVisualTrue(int child)
+    {
+        itemSlots.transform.GetChild(child).GetChild(0).GetComponent<Image>().enabled = true;
+    }
+
     public bool CheckCanOpen(string name)
     {
         bool canOpen = false;
         switch (name)
         {
             case "Door":
-                if (ItemInfo.hasItemLockpick)
-                {
-                    canOpen = true;
-                }
-                break;
-            case "Vent":
-                if (ItemInfo.hasItemLockpick)
-                {
-                    canOpen = true;
-                }
-                break;
-            case "Vechile":
                 if (ItemInfo.hasItemLockpick)
                 {
                     canOpen = true;
