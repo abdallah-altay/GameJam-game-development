@@ -8,6 +8,7 @@ public class RespawnerManager : MonoBehaviour
     private Vector3 startPosition;
     public GameObject youWin;
     private Scene scene;
+    private ItemManager itemManager;
 
     private void Awake()
     {
@@ -15,24 +16,28 @@ public class RespawnerManager : MonoBehaviour
         startPosition = gameObject.transform.GetChild(0).gameObject.transform.position;
         player.transform.position = startPosition;
         scene = SceneManager.GetActiveScene();
+        Time.timeScale = 1f;
+        itemManager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        if (ItemInfo.hasItemLockpick)
+        {
+            itemManager.SetItemVisualTrue(0);
+        }
+        if (ItemInfo.hasItemScrewdriver)
+        {
+            itemManager.SetItemVisualTrue(1);
+        }
+        if (ItemInfo.hasItemCarKeys)
+        {
+            itemManager.SetItemVisualTrue(2);
+        }
     }
 
     public void Interacted(string objectName)
     {
-
-        switch (objectName)
+        if(objectName == "EndCollider")
         {
-            case "StartCollider":
-                TriggeredStart();
-                break;
-            case "EndCollider":
-                TriggeredEnd();
-                break;
+            TriggeredEnd();
         }
-    }
-    public void TriggeredStart()
-    {
-        
     }
 
     public void ResetPlayerToSpawn()
@@ -59,7 +64,10 @@ public class RespawnerManager : MonoBehaviour
         }
         if (scene.name == "Level2")
         {
-            Debug.Log("You Win");
+            SceneManager.LoadScene("MainMenu");
+            ItemInfo.hasItemLockpick = false;
+            ItemInfo.hasItemScrewdriver = false;
+            ItemInfo.hasItemCarKeys = false;
         }
     }
 }
