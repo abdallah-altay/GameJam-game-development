@@ -24,10 +24,10 @@ public class FieldOfViewGuards : MonoBehaviour
     void LateUpdate()
     {
         this.transform.position = new Vector3(0, 0, -0.1f);
-        int rayCount = 5;
+        int rayCount = 90;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
-        float viewDistance = 1f;
+        float viewDistance = 2f;
 
         Vector3[] vertices = new Vector3[rayCount + 2];
         Vector2[] uv = new Vector2[vertices.Length];
