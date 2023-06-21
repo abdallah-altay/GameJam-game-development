@@ -44,13 +44,11 @@ public class FieldOfViewGuards : MonoBehaviour
 
             if (raycastHit2D.collider == null)
             {
-                Debug.Log("no hit");
                 //no hit
                 vertex = origin + UtilsClass.GetVectorFromAngle(angle) * viewDistance;
             }
             else
             {
-                Debug.Log("hit");
                 //hit
                 vertex = raycastHit2D.point;
             }

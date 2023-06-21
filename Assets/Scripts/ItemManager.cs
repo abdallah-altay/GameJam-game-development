@@ -55,18 +55,6 @@ public class ItemManager : MonoBehaviour
                     canOpen = true;
                 }
                 break;
-            case "Vent":
-                if (ItemInfo.hasItemLockpick)
-                {
-                    canOpen = true;
-                }
-                break;
-            case "Vechile":
-                if (ItemInfo.hasItemLockpick)
-                {
-                    canOpen = true;
-                }
-                break;
         }
         return canOpen;
     }

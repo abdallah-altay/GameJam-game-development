@@ -43,7 +43,7 @@ public class PowerupManager : MonoBehaviour
         guards = GameObject.FindGameObjectsWithTag("Guard");
         foreach(GameObject guard in guards)
         {
-            guard.transform.GetChild(1).gameObject.SetActive(false);
+            guard.transform.GetChild(0).gameObject.SetActive(false);
         }
         StartCoroutine(Countdown(5, name));
     }
@@ -53,7 +53,7 @@ public class PowerupManager : MonoBehaviour
         guards = GameObject.FindGameObjectsWithTag("Guard");
         foreach (GameObject guard in guards)
         {
-            guard.transform.GetChild(1).gameObject.SetActive(true);
+            guard.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
