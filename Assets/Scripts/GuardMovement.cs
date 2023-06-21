@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GuardMovement : MonoBehaviour
 {
+    public bool isRotated;
+    public FieldOfViewGuards fieldOfViewGuards;
+
     //Position 1 should be where they spawn in
     public Vector2 position1;
     public Vector2 position2;
@@ -33,7 +36,17 @@ public class GuardMovement : MonoBehaviour
         transform.position = position1;
     }
 
-
+    void Start()
+    {
+        if (isRotated)
+        {
+            fieldOfViewGuards.SetAimDirection(new Vector3(0, 180, 0));
+        }
+        else
+        {
+            fieldOfViewGuards.SetAimDirection(new Vector3(0, -180, 0));
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -59,6 +72,11 @@ public class GuardMovement : MonoBehaviour
                 transform.GetChild(0).GetComponent<Animator>().enabled = true;
             }
         }
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+        if (fieldOfViewGuards != null)
+        {
+            fieldOfViewGuards.SetOrigin(new Vector3(transform.position.x, transform.position.y, -0.1f));
+        }
     }
 
     public void Moving(Vector2 startPosition, Vector2 endPosition)
@@ -75,7 +93,32 @@ public class GuardMovement : MonoBehaviour
             else
             {
                 transform.Rotate(0, 180, 0);
+                
             }
+
+            if (movingWay)
+            {
+                if (isRotated)
+                {
+                    fieldOfViewGuards.SetAimDirection(new Vector3(0, 180, 0));
+                }
+                else
+                {
+                    fieldOfViewGuards.SetAimDirection(new Vector3(0, -180, 0));
+                }
+            }
+            else
+            {
+                if (isRotated)
+                {
+                    fieldOfViewGuards.SetAimDirection(new Vector3(0, -180, 0));
+                }
+                else
+                {
+                    fieldOfViewGuards.SetAimDirection(new Vector3(0, 180, 0));
+                }
+            }
+
             canMove = false;
             transform.GetChild(0).GetComponent<Animator>().enabled = false;
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = standingGuard;
