@@ -9,10 +9,13 @@ public class RespawnerManager : MonoBehaviour
     public GameObject youWin;
     private Scene scene;
     private ItemManager itemManager;
+    public GameObject itemsPrefab;
+    private GameObject items;
 
     private void Awake()
     {
         player = GameObject.Find("Player");
+        items = GameObject.Find("Items");
         startPosition = gameObject.transform.GetChild(0).gameObject.transform.position;
         player.transform.position = startPosition;
         scene = SceneManager.GetActiveScene();
@@ -44,6 +47,10 @@ public class RespawnerManager : MonoBehaviour
     {
         Debug.Log("Reset");
         player.transform.position = startPosition;
+        ItemInfo.hasItemLockpick = false;
+        ItemInfo.hasItemScrewdriver = false;
+        Destroy(items);
+        Instantiate(itemsPrefab);
     }
 
     public void TriggeredEnd()
