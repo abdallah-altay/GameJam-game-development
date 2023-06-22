@@ -359,6 +359,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 654953985180970117, guid: 4d3787ea8a3549746b9d6ed07f6793d3, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 654953985180970117, guid: 4d3787ea8a3549746b9d6ed07f6793d3, type: 3}
+      propertyPath: standingDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 654953985180970117, guid: 4d3787ea8a3549746b9d6ed07f6793d3, type: 3}
       propertyPath: fieldOfViewGuards
       value: 
       objectReference: {fileID: 3128327866713634236}

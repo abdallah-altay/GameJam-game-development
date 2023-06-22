@@ -47,8 +47,19 @@ public class RespawnerManager : MonoBehaviour
     {
         Debug.Log("Reset");
         player.transform.position = startPosition;
-        ItemInfo.hasItemLockpick = false;
-        ItemInfo.hasItemScrewdriver = false;
+        if(scene.name == "Main")
+        {
+            itemManager.SetItemVisualFalse(0);
+            itemManager.SetItemVisualFalse(1);
+            ItemInfo.hasItemLockpick = false;
+            ItemInfo.hasItemScrewdriver = false;
+        }
+        if (scene.name == "Level2")
+        {
+            itemManager.SetItemVisualFalse(2);
+            ItemInfo.hasItemCarKeys = false;
+        }
+        
         Destroy(items);
         Instantiate(itemsPrefab);
     }

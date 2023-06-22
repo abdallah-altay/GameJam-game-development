@@ -5,26 +5,48 @@ using UnityEngine;
 public class VentManager : MonoBehaviour
 {
     public GameObject otherVent;
-    public bool canTeleport;
+    public bool canTeleport = false;
+    public GameObject player;
+    public GameObject helpTip;
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void Awake()
     {
-        if (other.transform.gameObject.name == "Player" && canTeleport && ItemInfo.hasItemScrewdriver)
+        canTeleport = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Player")
         {
-            otherVent.GetComponent<VentManager>().canTeleport = false;
-            TeleportToOtherVent(other.transform.gameObject);
+            canTeleport = true;
+            helpTip.SetActive(true);
         }
+
     }
     public void OnTriggerExit2D(Collider2D other)
     {
-        canTeleport = true;
+        if (other.gameObject.name == "Player")
+        {
+            canTeleport = false;
+            helpTip.SetActive(false);
+        }
     }
 
-    public void TeleportToOtherVent(GameObject player)
+    void Update()
+    {
+        if (canTeleport && ItemInfo.hasItemScrewdriver && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Entered Vent");
+            otherVent.GetComponent<VentManager>().canTeleport = false;
+            TeleportToOtherVent();
+        }
+    }
+
+    public void TeleportToOtherVent()
     {
         Vector3 teleportTo = new Vector3(0,0,0);
         teleportTo = otherVent.transform.position;
-        Debug.Log(otherVent.transform.localEulerAngles.z);
+        Debug.Log(teleportTo);
         switch (otherVent.transform.localEulerAngles.z)
         {
             case 0:

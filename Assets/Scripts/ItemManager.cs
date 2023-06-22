@@ -48,6 +48,10 @@ public class ItemManager : MonoBehaviour
     {
         itemSlots.transform.GetChild(child).GetChild(0).GetComponent<Image>().enabled = true;
     }
+    public void SetItemVisualFalse(int child)
+    {
+        itemSlots.transform.GetChild(child).GetChild(0).GetComponent<Image>().enabled = false;
+    }
 
     public bool CheckCanOpen(string name)
     {
@@ -62,5 +66,18 @@ public class ItemManager : MonoBehaviour
                 break;
         }
         return canOpen;
+    }
+
+    public void HelpMenu()
+    {
+        Debug.Log(Time.timeScale);
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
+        else if (Time.timeScale == 1f)
+        {
+            Time.timeScale = 0f;
+        }
     }
 }
